@@ -11,7 +11,7 @@ const hostname = 'localhost',
 
 const app = express();
 
-// middle-ware
+// middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json()); // sets body to req.body
 app.use('/dishes', dishRouter);

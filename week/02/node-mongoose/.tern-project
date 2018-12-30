@@ -1,0 +1,7 @@
+{
+    "plugins": {
+        "node": {},
+        "node-mongodb-native": {},
+        "tern-node-mongoose": {}
+    }
+}

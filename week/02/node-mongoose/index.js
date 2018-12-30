@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 const Dishes = require('./models/dishes');
 
-const url = 'mongodb://localhost:27017/conFusion';
+const url = 'mongodb://localhost:27017/conFusion',
+    opts = {useNewUrlParser: true };
 
-mongoose.connect(url).then((db) => {
+mongoose.set('useFindAndModify', false);
+mongoose.connect(url, opts).then((db) => {
 
     console.log('Connected correctly to server');
 
@@ -15,10 +17,26 @@ mongoose.connect(url).then((db) => {
     .then((dish) => {
         console.log(dish);
 
-        return Dishes.find({});
+        return Dishes.findOneAndUpdate(dish._id, {
+            $set: {description: "Updated test"}
+        }, {
+            new: true
+        })
+        .exec();
     })
-    .then((dishes) => {
-        console.log(dishes);
+    .then((dish) => {
+        console.log(dish);
+
+        dish.comments.push({
+            rating: 5,
+            comment: 'I\'m getting a sinking feeling!',
+            author: 'Leonardo di Carpaccio'
+        });
+
+        return dish.save();
+    })
+    .then((dish) => {
+        console.log(dish);
 
         return Dishes.deleteMany({});
     })

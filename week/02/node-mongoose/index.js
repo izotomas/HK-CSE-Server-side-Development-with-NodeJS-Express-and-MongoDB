@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Dishes = require('./models/dishes');
 
 const url = 'mongodb://localhost:27017/conFusion',
-    opts = {useNewUrlParser: true };
+    opts = { useNewUrlParser: true };
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect(url, opts).then((db) => {
@@ -18,7 +18,7 @@ mongoose.connect(url, opts).then((db) => {
         console.log(dish);
 
         return Dishes.findOneAndUpdate(dish._id, {
-            $set: {description: "Updated test"}
+            $set: { description: "Updated test" }
         }, {
             new: true
         })

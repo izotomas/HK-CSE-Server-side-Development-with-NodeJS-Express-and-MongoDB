@@ -15,7 +15,7 @@ promoRouter.route('/')
         res.setHeader('Content-Type', 'application/json');
         res.json(promo);
     }, (err) => next(err))
-    .catch((err) => next(err))
+    .catch((err) => next(err));
 })
 .post((req, res, next) => {
     Promotions.create(req.body)

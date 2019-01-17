@@ -61,7 +61,6 @@ app.use(function(err, req, res, next) {
 
 // basic authetntication function
 function auth (req, res, next) {
-    console.log(req.headers);
     if (!req.signedCookies.user) {
         var authHeader = req.headers.authorization;
         if (!authHeader) {
@@ -79,6 +78,7 @@ function auth (req, res, next) {
 
         // admin "authetntication"
         if (user == 'admin' && pass == 'password') {
+            res.cookie('user','admin',{signed: true});
             next(); // authorized
         }
         else {

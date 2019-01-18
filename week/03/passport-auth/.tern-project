@@ -1,0 +1,9 @@
+{
+    "plugins": {
+        "node": {},
+        "node-express": {},
+        "passport": {},
+        "pasport-local": {},
+        "passport-local-mongoose": {}
+    }
+}

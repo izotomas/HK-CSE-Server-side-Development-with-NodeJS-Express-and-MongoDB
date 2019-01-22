@@ -8,7 +8,6 @@ const createError = require('http-errors'),
 
 // routes
 var config = require('./config'),
-    authenticate = require('./authenticate'),
     indexRouter = require('./routes/index'),
     usersRouter = require('./routes/users'),
     dishRouter = require('./routes/dishRouter'),

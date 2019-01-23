@@ -2,7 +2,7 @@ const express = require('express'),
     bodyParser = require('body-parser');
 
 const Dishes = require('../models/dishes'),
-    cors = require('../cors'),
+    cors = require('./cors'),
     authenticate = require('../authenticate'),
     dishRouter = express.Router();
 

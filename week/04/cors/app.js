@@ -7,20 +7,20 @@ const createError = require('http-errors'),
     passport = require('passport');
 
 // routes
-var config = require('./config');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var dishRouter = require('./routes/dishRouter');
-var promoRouter = require('./routes/promoRouter');
-var leaderRouter = require('./routes/leaderRouter');
-var uploadRouter = require('./routes/uploadRouter');
+var config = require('./config'),
+    indexRouter = require('./routes/index'),
+    usersRouter = require('./routes/users'),
+    dishRouter = require('./routes/dishRouter'),
+    promoRouter = require('./routes/promoRouter'),
+    leaderRouter = require('./routes/leaderRouter'),
+    uploadRouter = require('./routes/uploadRouter');
 
 // connect to database
 mongoose.set('useCreateIndex', true);
 const connect = mongoose.connect(config.mongoUrl, { useNewUrlParser: true });
 
 connect.then((db) => {
-    console.log("Connected correctly to server");
+    console.log('Connected correctly to server');
 }, (err) => { console.log(err); });
 
 var app = express();
@@ -52,12 +52,12 @@ app.use('/leaders', leaderRouter);
 app.use('/imageUpload', uploadRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

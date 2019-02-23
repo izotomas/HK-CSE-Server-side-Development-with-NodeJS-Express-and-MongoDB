@@ -13,7 +13,8 @@ var config = require('./config'),
     dishRouter = require('./routes/dishRouter'),
     promoRouter = require('./routes/promoRouter'),
     leaderRouter = require('./routes/leaderRouter'),
-    uploadRouter = require('./routes/uploadRouter');
+    uploadRouter = require('./routes/uploadRouter'),
+    favoriteRouter = require('./routes/favoriteRouter');
 
 // connect to database
 mongoose.set('useCreateIndex', true);
@@ -50,6 +51,7 @@ app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leaders', leaderRouter);
 app.use('/imageUpload', uploadRouter);
+app.use('/favorites', favoriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
